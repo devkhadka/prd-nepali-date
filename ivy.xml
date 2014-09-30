@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
+
+    <info organisation="${ivy.artifact.group}" module="pentaho-sample-formula" revision="${project.revision}" />
+    
+    <configurations>
+    	<conf name="default" extends="default-ext"/>
+    	<conf name="default-ext"/>
+    	<conf name="test" visibility="private"/>
+    	<conf name="source" />    	
+    </configurations>
+    
+    <publications>
+    	<artifact name="${ivy.artifact.id}" type="jar"  conf="default" ext="jar"/>
+	    <artifact name="${ivy.artifact.id}" m:classifier="sources" type="source" ext="jar" conf="source"/>    	
+    </publications>
+    
+    <dependencies defaultconf="default-ext->default">
+        <dependency org="${dependency.libformula.group}" name="libformula" rev="${dependency.libformula.revision}"
+                    conf="default" >
+            <artifact name="libformula"/>
+            <artifact name="libformula" type="source" ext="jar" m:classifier="sources"/>
+        </dependency>
+      <!--   dependency org="${dependency.libformula.group}" name="libformula" rev="${dependency.libformula.revision}" / -->
+      <dependency org="${dependency.libbase.group}" name="libbase" rev="${dependency.libbase.revision}" />
+    </dependencies>
+    
+</ivy-module>
